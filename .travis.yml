@@ -1,0 +1,11 @@
+language: java
+
+before_script: cd FileProcessingApp
+
+script: mvn clean package
+
+sudo: false
+
+jdk:
+  - openjdk7
+  - oraclejdk7
