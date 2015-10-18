@@ -42,6 +42,17 @@
         <url>https://github.com/atanasg/file-processing-application/issues</url>
     </issueManagement>
 
+    <ciManagement>
+        <system>Travis CI</system>
+        <url>https://travis-ci.org/atanasg/file-processing-application</url>
+        <notifiers>
+            <notifier>
+                <type>mail</type>
+                <address>atanas.gegov.oss@gmail.com</address>
+            </notifier>
+        </notifiers>
+    </ciManagement>
+
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
