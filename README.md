@@ -49,4 +49,4 @@ Generate the project site in order to see all direct and transitive dependencies
 mvn clean site
 ```
 ## Test coverage and bugs
-Generite the project site (see above) to find the reports from Cobertura and FindBugs.
+Generate the project site (see above) to find the reports from Cobertura and FindBugs.
