@@ -13,16 +13,22 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.atanasg.fileprocessingapp;
+package com.atanasg.fileprocessingapp.command.status;
 
 /**
- * Hello world!
+ * {@link CommandSuccessful} objects are the return
+ * values for successful commands. The method
+ * getDetailedInformation() from
+ * the base class returns data (e.g. a value if
+ * the command reads a value) or other additional
+ * information.
  *
+ * @author Atanas Gegov
  */
-public class App 
-{
-    public static void main( String[] args )
-    {
-        System.out.println( "Hello World!" );
-    }
+public class CommandSuccessful extends CommandExecStatus {
+
+	public CommandSuccessful() {
+		super("Command SUCCESSFUL", true);
+	}
+
 }
