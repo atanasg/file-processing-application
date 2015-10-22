@@ -1,0 +1,164 @@
+
+Please provide a path to some .txt file:
+res/ExampleFile.txt
+Reading file 'res/ExampleFile.txt'...
+Command SUCCESSFUL
+Successfully parsed 3 lines from file res/ExampleFile.txt
+========================
+FILE PROCESSING APPLICATION - SUPPORTED COMMANDS
+----
+help - Prints this message
+----
+insertnum <line_index> <line_number_index> <new integer to set> - Insert a number at a specific position
+swaplines <first_line_index> <second_line_index> - Swap two lines of the file.
+swapnums <first_line_index> <first_line_number_index> <second_line_index> <second_line_number_index> - Swap two numbers at specified positions
+readnum <line_index> <line_number_index> - Read a number at a specified position
+modifynum <line_index> <line_number_index> <new integer to be set> - Modify a number at a specified position and set a new value
+removenum <line_index> <line_number_index> - Remove a number at a specified position
+* PAY ATTENTION: The first number in the first row has <line_index> = 1 and <line_number_index> = 1
+----
+save - Save the performed (if any) changes in the file
+quit - Exit the application
+----
+validate - Validate the file content
+========================
+
+Enter a command:
+insertnum 0 0 2233445566778899
+Inserting 2233445566778899 at position (0,0)...
+Command SUCCESSFUL
+Created new line at the beginning of the file
+The argument about number index was ignored in this new line
+
+Enter a command:
+validate
+Validating file content...
+Command SUCCESSFUL
+No validation errors detected
+
+Enter a command:
+swaplines 0 4
+Swapping lines 0 and 4...
+Command FAILED
+Index for line 0 out of range [1,4]
+
+Enter a command:
+swaplines 1 4
+Swapping lines 1 and 4...
+Command SUCCESSFUL
+Swapped lines 1 and 4
+
+Enter a command:
+readnum 4 1
+Reading number at position (4,1)...
+Command SUCCESSFUL
+2233445566778899
+
+Enter a command:
+readnum 4 0
+Reading number at position (4,0)...
+Command FAILED
+Number index in line 4 out of available range [1,1]
+
+Enter a command:
+readnum 0 0
+Reading number at position (0,0)...
+Command FAILED
+Index for line 0 out of range [1,4]
+
+Enter a command:
+readnum 1 1
+Reading number at position (1,1)...
+Command SUCCESSFUL
+9897823423975239
+
+Enter a command:
+modifynum 0 0 5000
+Replacing number at position (0,0) with 5000...
+Command FAILED
+Index for line 0 out of range [1,4]
+
+Enter a command:
+modifynum 1 0 5000
+Replacing number at position (1,0) with 5000...
+Command FAILED
+Number index in line 1 out of available range [1,1]
+
+Enter a command:
+modifynum 2 10 5000
+Replacing number at position (2,10) with 5000...
+Command FAILED
+Number index in line 2 out of available range [1,6]
+
+Enter a command:
+modifynum 2 2 5555
+Replacing number at position (2,2) with 5555...
+Command SUCCESSFUL
+The number at position (2,2) is now 5555
+
+Enter a command:
+help
+========================
+FILE PROCESSING APPLICATION - SUPPORTED COMMANDS
+----
+help - Prints this message
+----
+insertnum <line_index> <line_number_index> <new integer to set> - Insert a number at a specific position
+swaplines <first_line_index> <second_line_index> - Swap two lines of the file.
+swapnums <first_line_index> <first_line_number_index> <second_line_index> <second_line_number_index> - Swap two numbers at specified positions
+readnum <line_index> <line_number_index> - Read a number at a specified position
+modifynum <line_index> <line_number_index> <new integer to be set> - Modify a number at a specified position and set a new value
+removenum <line_index> <line_number_index> - Remove a number at a specified position
+* PAY ATTENTION: The first number in the first row has <line_index> = 1 and <line_number_index> = 1
+----
+save - Save the performed (if any) changes in the file
+quit - Exit the application
+----
+validate - Validate the file content
+========================
+
+Enter a command:
+removenum 0 0
+Removing number at position (0,0)...
+Command FAILED
+Index for line 0 out of range [1,4]
+
+Enter a command:
+removebnum 1 0
+Executing 'removebnum'...
+Command FAILED
+Unknown command
+
+Enter a command:
+removenum 1 0
+Removing number at position (1,0)...
+Command FAILED
+Number index in line 1 out of available range [1,1]
+
+Enter a command:
+removenum 2 10
+Removing number at position (2,10)...
+Command FAILED
+Number index in line 2 out of available range [1,6]
+
+Enter a command:
+removenum 3 2
+Removing number at position (3,2)...
+Command SUCCESSFUL
+Removed number 2342340005320 from line 3
+
+Enter a command:
+validate
+Validating file content...
+Command SUCCESSFUL
+No validation errors detected
+
+Enter a command:
+save
+Saving opened file...
+Command SUCCESSFUL
+File successfully saved
+
+Enter a command:
+quit
+Exiting application...
