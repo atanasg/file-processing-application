@@ -34,7 +34,7 @@
 
     <scm>
         <url>https://github.com/atanasg/file-processing-application/commits/master</url>
-        <developerConnection>https://github.com/atanasg/file-processing-application.git</developerConnection>
+        <developerConnection>scm:https://github.com/atanasg/file-processing-application.git</developerConnection>
     </scm>
 
     <issueManagement>
