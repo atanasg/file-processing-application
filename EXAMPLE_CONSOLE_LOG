@@ -10,91 +10,70 @@ FILE PROCESSING APPLICATION - SUPPORTED COMMANDS
 help - Prints this message
 ----
 insertnum <line_index> <line_number_index> <new integer to set> - Insert a number at a specific position
-swaplines <first_line_index> <second_line_index> - Swap two lines of the file.
+swaplines <first_line_index> <second_line_index> - Swap two lines
 swapnums <first_line_index> <first_line_number_index> <second_line_index> <second_line_number_index> - Swap two numbers at specified positions
 readnum <line_index> <line_number_index> - Read a number at a specified position
 modifynum <line_index> <line_number_index> <new integer to be set> - Modify a number at a specified position and set a new value
 removenum <line_index> <line_number_index> - Remove a number at a specified position
 * PAY ATTENTION: The first number in the first row has <line_index> = 1 and <line_number_index> = 1
 ----
-save - Save the performed (if any) changes in the file
-quit - Exit the application
+validate - Validate the current content
+print - Print the current content
 ----
-validate - Validate the file content
+save - Save the performed changes in the file
+quit - Exit the application
 ========================
 
 Enter a command:
-insertnum 0 0 2233445566778899
-Inserting 2233445566778899 at position (0,0)...
+swaplines 1 3
+Swapping lines 1 and 3...
 Command SUCCESSFUL
-Created new line at the beginning of the file
+Swapped lines 1 and 3
+
+Enter a command:
+swaplines 0 3
+Swapping lines 0 and 3...
+Command FAILED
+Index for line 0 out of range [1,3]
+
+Enter a command:
+print
+Printing current content...
+Command SUCCESSFUL
+9897823423975239 
+213123523520234234 2342340005320 3240230042340230803240 3240909 
+112312321525 12312312 5234234234 231321321312 123123 2131353453435345345 
+
+Enter a command:
+insertnum 4 1 23456
+Inserting 23456 at position (4,1)...
+Command SUCCESSFUL
+Created new line at the end of the file
 The argument about number index was ignored in this new line
 
 Enter a command:
-validate
-Validating file content...
+swapnum 2 1 2 2
+Executing 'swapnum'...
+Command FAILED
+Unknown command
+
+Enter a command:
+swapnums 2 1 2 2
+Swapping numbers at position (2,1) and (2,2)...
 Command SUCCESSFUL
-No validation errors detected
+Swapped 213123523520234234 and 2342340005320
 
 Enter a command:
-swaplines 0 4
-Swapping lines 0 and 4...
-Command FAILED
-Index for line 0 out of range [1,4]
-
-Enter a command:
-swaplines 1 4
-Swapping lines 1 and 4...
+modifynum 3 1 1111111111111
+Replacing number at position (3,1) with 1111111111111...
 Command SUCCESSFUL
-Swapped lines 1 and 4
+The number at position (3,1) is now 1111111111111
 
 Enter a command:
-readnum 4 1
-Reading number at position (4,1)...
+removenum 1 1
+Removing number at position (1,1)...
 Command SUCCESSFUL
-2233445566778899
-
-Enter a command:
-readnum 4 0
-Reading number at position (4,0)...
-Command FAILED
-Number index in line 4 out of available range [1,1]
-
-Enter a command:
-readnum 0 0
-Reading number at position (0,0)...
-Command FAILED
-Index for line 0 out of range [1,4]
-
-Enter a command:
-readnum 1 1
-Reading number at position (1,1)...
-Command SUCCESSFUL
-9897823423975239
-
-Enter a command:
-modifynum 0 0 5000
-Replacing number at position (0,0) with 5000...
-Command FAILED
-Index for line 0 out of range [1,4]
-
-Enter a command:
-modifynum 1 0 5000
-Replacing number at position (1,0) with 5000...
-Command FAILED
-Number index in line 1 out of available range [1,1]
-
-Enter a command:
-modifynum 2 10 5000
-Replacing number at position (2,10) with 5000...
-Command FAILED
-Number index in line 2 out of available range [1,6]
-
-Enter a command:
-modifynum 2 2 5555
-Replacing number at position (2,2) with 5555...
-Command SUCCESSFUL
-The number at position (2,2) is now 5555
+Removed number 9897823423975239 from line 1
 
 Enter a command:
 help
@@ -104,52 +83,37 @@ FILE PROCESSING APPLICATION - SUPPORTED COMMANDS
 help - Prints this message
 ----
 insertnum <line_index> <line_number_index> <new integer to set> - Insert a number at a specific position
-swaplines <first_line_index> <second_line_index> - Swap two lines of the file.
+swaplines <first_line_index> <second_line_index> - Swap two lines
 swapnums <first_line_index> <first_line_number_index> <second_line_index> <second_line_number_index> - Swap two numbers at specified positions
 readnum <line_index> <line_number_index> - Read a number at a specified position
 modifynum <line_index> <line_number_index> <new integer to be set> - Modify a number at a specified position and set a new value
 removenum <line_index> <line_number_index> - Remove a number at a specified position
 * PAY ATTENTION: The first number in the first row has <line_index> = 1 and <line_number_index> = 1
 ----
-save - Save the performed (if any) changes in the file
-quit - Exit the application
+validate - Validate the current content
+print - Print the current content
 ----
-validate - Validate the file content
+save - Save the performed changes in the file
+quit - Exit the application
 ========================
 
 Enter a command:
-removenum 0 0
-Removing number at position (0,0)...
-Command FAILED
-Index for line 0 out of range [1,4]
-
-Enter a command:
-removebnum 1 0
-Executing 'removebnum'...
-Command FAILED
-Unknown command
-
-Enter a command:
-removenum 1 0
-Removing number at position (1,0)...
-Command FAILED
-Number index in line 1 out of available range [1,1]
-
-Enter a command:
-removenum 2 10
-Removing number at position (2,10)...
-Command FAILED
-Number index in line 2 out of available range [1,6]
-
-Enter a command:
-removenum 3 2
-Removing number at position (3,2)...
+print
+Printing current content...
 Command SUCCESSFUL
-Removed number 2342340005320 from line 3
+2342340005320 213123523520234234 3240230042340230803240 3240909 
+1111111111111 12312312 5234234234 231321321312 123123 2131353453435345345 
+23456
+
+Enter a command:
+readnum 1 4
+Reading number at position (1,4)...
+Command SUCCESSFUL
+3240909
 
 Enter a command:
 validate
-Validating file content...
+Validating content...
 Command SUCCESSFUL
 No validation errors detected
 
