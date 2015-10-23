@@ -73,11 +73,12 @@ public class FileProcessingAppCommandLineUI implements FileProcessingAppView {
 				+ "Remove a number at a specified position%n", CommandNames.COMMAND_REMOVENUM);
 		System.out.println("* PAY ATTENTION: The first number in the first row has <line_index> = 1 and <line_number_index> = 1");
 		System.out.println(SMALL_SEPARATING_LINE_STRING);
-		System.out.format("%s - Save the performed (if any) changes in the file%n",
+		System.out.format("%s - Validate the current content%n", CommandNames.COMMAND_VALIDATE);
+		System.out.format("%s - Print the current content%n", CommandNames.COMMAND_PRINT);
+		System.out.println(SMALL_SEPARATING_LINE_STRING);
+		System.out.format("%s - Save the performed changes in the file%n",
 				CommandNames.COMMAND_SAVE);
 		System.out.format("%s - Exit the application%n", CommandNames.COMMAND_QUIT);
-		System.out.println(SMALL_SEPARATING_LINE_STRING);
-		System.out.format("%s - Validate the file content%n", CommandNames.COMMAND_VALIDATE);
 		System.out.println(SEPARATING_LINE_STRING);
 	}
 
