@@ -44,7 +44,7 @@ public class ValidateCommand extends AbstractCommand {
 
 	@Override
 	public void execute() {
-		userInterface.showInfoForCommandInProgress("Validating file content...");
+		userInterface.showInfoForCommandInProgress("Validating content...");
 		List<String> fileLines = fileContentModel.getFileContentAsFileLines();
 		CommandExecStatus validateCommandStatus = fileValidator.validateFileContents(fileLines);
 		userInterface.showCommandExecutionStatus(validateCommandStatus);
