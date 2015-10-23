@@ -62,7 +62,7 @@ public class FileProcessingAppCommandLineUI implements FileProcessingAppView {
 		System.out.format("%s <line_index> <line_number_index> <new integer to set> - "
 				+ "Insert a number at a specific position%n", CommandNames.COMMAND_INSERTNUM);
 		System.out.format("%s <first_line_index> <second_line_index> - "
-				+ "Swap two lines of the file.%n", CommandNames.COMMAND_SWAPLINES);
+				+ "Swap two lines%n", CommandNames.COMMAND_SWAPLINES);
 		System.out.format("%s <first_line_index> <first_line_number_index> <second_line_index> <second_line_number_index> - "
 				+ "Swap two numbers at specified positions%n", CommandNames.COMMAND_SWAPNUMS);
 		System.out.format("%s <line_index> <line_number_index> - "
