@@ -131,6 +131,7 @@ public class ApplicationIntegrationTest {
 		appController.processUserCommand("insertnum 1 1 20abc20");
 
 		// some other commands
+		appController.processUserCommand("print");
 		appController.processUserCommand("help");
 		appController.processUserCommand("validate");
 
@@ -139,12 +140,12 @@ public class ApplicationIntegrationTest {
 
 		//// check the correct interaction with the View
 
-		// 12 commands show that they are in progress
+		// 13 commands show that they are in progress
 		// (all besides 'help' + the invalid argument commands)
-		verify(appUI, times(12)).showInfoForCommandInProgress(any(String.class));
+		verify(appUI, times(13)).showInfoForCommandInProgress(any(String.class));
 
-		// 9 valid commands ('help' does not print exec status)
-		verify(appUI, times(9)).showCommandExecutionStatus(isA(CommandSuccessful.class));
+		// 10 valid commands ('help' does not print exec status)
+		verify(appUI, times(10)).showCommandExecutionStatus(isA(CommandSuccessful.class));
 
 		// 4 invalid commands (invalid range commands + unknown command) 
 		verify(appUI, times(4)).showCommandExecutionStatus(isA(CommandFailed.class));
