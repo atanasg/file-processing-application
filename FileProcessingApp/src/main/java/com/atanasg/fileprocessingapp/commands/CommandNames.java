@@ -37,6 +37,9 @@ public class CommandNames {
 	// validate command
 	public static final String COMMAND_VALIDATE = "validate";
 
+	// print command
+	public static final String COMMAND_PRINT = "print";
+
 	// save command
 	public static final String COMMAND_SAVE = "save";
 

@@ -26,6 +26,7 @@ import com.atanasg.fileprocessingapp.commands.HelpCommand;
 import com.atanasg.fileprocessingapp.commands.InsertNumCommand;
 import com.atanasg.fileprocessingapp.commands.ModifyNumCommand;
 import com.atanasg.fileprocessingapp.commands.OpenFileCommand;
+import com.atanasg.fileprocessingapp.commands.PrintCommand;
 import com.atanasg.fileprocessingapp.commands.QuitCommand;
 import com.atanasg.fileprocessingapp.commands.ReadNumCommand;
 import com.atanasg.fileprocessingapp.commands.RemoveNumCommand;
@@ -136,6 +137,9 @@ public class FileProcessingAppControllerImpl implements FileProcessingAppControl
 			break;
 		case CommandNames.COMMAND_SWAPNUMS:
 			command = new SwapNumsCommand(fileContentModel, userInterface, commandArgs);
+			break;
+		case CommandNames.COMMAND_PRINT:
+			command = new PrintCommand(fileContentModel, userInterface);
 			break;
 		case CommandNames.COMMAND_VALIDATE:
 			command = new ValidateCommand(fileContentModel, userInterface);
