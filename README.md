@@ -36,7 +36,7 @@ cd FileProcessingApp
 mvn clean package
 
 # Run
-java -classpath target/FileProcessingApp-<version, e.g. 0.1.0-SNAPSHOT>.jar com.atanasg.fileprocessingapp.FileProcessingAppLauncher
+java -classpath target/FileProcessingApp-<version, e.g. 0.1.0-SNAPSHOT>.jar:<path to guava>/guava-18.0.jar com.atanasg.fileprocessingapp.FileProcessingAppLauncher
 ```
 A log showing an example interaction with the appliaction can be found in the `EXAMPLE_CONSOLE_LOG` file.
 
