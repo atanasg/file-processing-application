@@ -47,6 +47,9 @@ Generate the project site in order to see all direct and transitive dependencies
 ```shell
 # Build project site and reports
 mvn clean site
+
+# Go to the location of the generated html site
+cd target/site/
 ```
 ## Test coverage and bugs
 Generate the project site (see above) to find the reports from Cobertura and FindBugs.
