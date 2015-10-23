@@ -13,17 +13,18 @@ FILE PROCESSING APPLICATION - SUPPORTED COMMANDS
 help - Prints this message
 ----
 insertnum <line_index> <line_number_index> <new integer to set> - Insert a number at a specific position
-swaplines <first_line_index> <second_line_index> - Swap two lines of the file.
+swaplines <first_line_index> <second_line_index> - Swap two lines
 swapnums <first_line_index> <first_line_number_index> <second_line_index> <second_line_number_index> - Swap two numbers at specified positions
 readnum <line_index> <line_number_index> - Read a number at a specified position
 modifynum <line_index> <line_number_index> <new integer to be set> - Modify a number at a specified position and set a new value
 removenum <line_index> <line_number_index> - Remove a number at a specified position
 * PAY ATTENTION: The first number in the first row has <line_index> = 1 and <line_number_index> = 1
 ----
-save - Save the performed (if any) changes in the file
-quit - Exit the application
+validate - Validate the current content
+print - Print the current content
 ----
-validate - Validate the file content
+save - Save the performed changes in the file
+quit - Exit the application
 ```
 
 ## Usage
