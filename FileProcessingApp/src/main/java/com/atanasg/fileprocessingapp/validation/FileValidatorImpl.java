@@ -15,6 +15,8 @@
  */
 package com.atanasg.fileprocessingapp.validation;
 
+import static com.google.common.base.Preconditions.checkNotNull;
+
 import java.util.List;
 
 import com.atanasg.fileprocessingapp.command.status.CommandExecStatus;
@@ -36,6 +38,8 @@ public class FileValidatorImpl implements FileValidator {
 
 	@Override
 	public CommandExecStatus validateFileContents(final List<String> fileLines) {
+		checkNotNull(fileLines, "The content validation function expects a non-null argument");
+
 		CommandExecStatus validationStatus = null;
 
 		for(int i = 0; i < fileLines.size(); i++) {
