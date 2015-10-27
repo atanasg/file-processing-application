@@ -57,24 +57,31 @@ public class FileValidatorImpl implements FileValidator {
 			}
 
 			// check rest of line
-			for(int j = 1; j < fileLine.length(); j++) {
-				String currentPosition = fileLine.charAt(j) + "";
-				boolean isValidSeparator = RuleSeparators.isValidSeparator(currentPosition);
-				boolean isValidNonSeparator = RuleNonSeparators.isValidNonSeparator(currentPosition);
-				if(!isValidSeparator && !isValidNonSeparator) {
-					if(validationStatus == null) {
-						validationStatus = new CommandFailed();
-					}
-					validationStatus.appendDetailedInfo(
-							String.format(LINE_HAS_AN_INVALID_CHARACTER_AT_POSITION,
-									(i + 1), currentPosition, (j + 1)));
-				}
-			}
+			validationStatus = checkLineAfterFirstCharacter(validationStatus, fileLine, i);
 		}
 
 		if(validationStatus == null) {
 			validationStatus = new CommandSuccessful();
 			validationStatus.appendDetailedInfo(NO_VALIDATION_ERRORS_DETECTED);
+		}
+		return validationStatus;
+	}
+
+	private CommandExecStatus checkLineAfterFirstCharacter(CommandExecStatus validationStatus,
+			String fileLine, int lineIndex) {
+
+		for(int j = 1; j < fileLine.length(); j++) {
+			String currentPosition = fileLine.charAt(j) + "";
+			boolean isValidSeparator = RuleSeparators.isValidSeparator(currentPosition);
+			boolean isValidNonSeparator = RuleNonSeparators.isValidNonSeparator(currentPosition);
+			if(!isValidSeparator && !isValidNonSeparator) {
+				if(validationStatus == null) {
+					validationStatus = new CommandFailed();
+				}
+				validationStatus.appendDetailedInfo(
+						String.format(LINE_HAS_AN_INVALID_CHARACTER_AT_POSITION,
+								(lineIndex + 1), currentPosition, (j + 1)));
+			}
 		}
 		return validationStatus;
 	}
