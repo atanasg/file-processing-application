@@ -35,7 +35,7 @@ import com.atanasg.fileprocessingapp.rules.RuleSeparators;
 public class FileValidatorImpl implements FileValidator {
 
 	@Override
-	public CommandExecStatus validateFileContents(List<String> fileLines) {
+	public CommandExecStatus validateFileContents(final List<String> fileLines) {
 		CommandExecStatus validationStatus = null;
 
 		for(int i = 0; i < fileLines.size(); i++) {
