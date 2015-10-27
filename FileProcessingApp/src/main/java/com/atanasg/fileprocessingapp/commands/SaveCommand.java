@@ -66,13 +66,11 @@ public class SaveCommand extends AbstractCommandWithArgs {
 	}
 
 	private void saveFileLinesToFile(File file, List<String> fileLines) {
-		try {
-			BufferedWriter buffWriter = new BufferedWriter(new FileWriter(file));
+		try(BufferedWriter buffWriter = new BufferedWriter(new FileWriter(file))) {
 			for(String line : fileLines) {
 				buffWriter.write(line + "\n");
 			}
 			buffWriter.flush();
-			buffWriter.close();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

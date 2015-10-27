@@ -85,13 +85,11 @@ public class ApplicationIntegrationTest {
 		inputLines.add("300 301 302 303 304");
 		inputLines.add("400 401 402 403 405 406");
 
-		try {
-			BufferedWriter buffWriter = new BufferedWriter(new FileWriter(testFile));
+		try(BufferedWriter buffWriter = new BufferedWriter(new FileWriter(testFile))) {
 			for(String line : inputLines) {
 				buffWriter.write(line + "\n");
 			}
 			buffWriter.flush();
-			buffWriter.close();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -165,17 +163,13 @@ public class ApplicationIntegrationTest {
 	}
 
 	private void checkFinalFileContent(List<String> expectedFileFinalLines) {
-		try {
-			BufferedReader buffReader = new BufferedReader(new FileReader(testFile));
-
+		try(BufferedReader buffReader = new BufferedReader(new FileReader(testFile))) {
 			for(int i = 0; i < expectedFileFinalLines.size(); i++) {
 				String fileLine = buffReader.readLine();
 				assertEquals(expectedFileFinalLines.get(i), fileLine);
 			}
 			// saved file should not have additional lines
 			assertNull(buffReader.readLine());
-
-			buffReader.close();
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {

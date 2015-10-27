@@ -75,15 +75,12 @@ public class OpenFileCommand extends AbstractCommandWithArgs {
 
 	private List<String> readFileLines(File file) {
 		List<String> fileLines = new LinkedList<String>();
-		try {
-			BufferedReader buffReader = new BufferedReader(new FileReader(file));
-
+		try(BufferedReader buffReader = new BufferedReader(new FileReader(file))) {
 			String fileLine = buffReader.readLine();
 			while(fileLine != null) {
 				fileLines.add(fileLine);
 				fileLine = buffReader.readLine();
 			}
-			buffReader.close();
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
