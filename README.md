@@ -52,5 +52,5 @@ mvn clean site
 # Go to the location of the generated html site
 cd target/site/
 ```
-## Test coverage and bugs
-Generate the project site (see above) to find the reports from Cobertura and FindBugs.
+## Test coverage and static code analysis
+Generate the project site (see above) to find the reports from Cobertura, FindBugs and PMD.
