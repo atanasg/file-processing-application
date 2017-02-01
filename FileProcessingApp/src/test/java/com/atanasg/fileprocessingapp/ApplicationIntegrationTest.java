@@ -118,7 +118,7 @@ public class ApplicationIntegrationTest {
 		appController.processUserCommand("removenum 2 4");
 		verify(fileContentModelSpy).removeNumber(1, 3);
 		appController.processUserCommand("modifynum 3 1 1");
-		verify(fileContentModelSpy).modifyNumber(2, 0, new BigInteger("1"));
+		verify(fileContentModelSpy).modifyNumber(2, 0, BigInteger.ONE);
 		appController.processUserCommand("unknowncommand");
 
 		// some commands with range violation
