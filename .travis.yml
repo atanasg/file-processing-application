@@ -2,10 +2,10 @@ language: java
 
 before_script: cd FileProcessingApp
 
-script: mvn clean package
+script: ./gradlew build
 
 sudo: false
 
 jdk:
-  - openjdk7
-  - oraclejdk7
+  - openjdk8
+  - oraclejdk8
