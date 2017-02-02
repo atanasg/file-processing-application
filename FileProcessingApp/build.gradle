@@ -18,6 +18,12 @@ version = '0.1.0-SNAPSHOT'
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
+// Setting compiler arguments
+tasks.withType(JavaCompile) {
+    options.encoding = 'utf-8'
+    options.compilerArgs = ['-implicit:none', '-Xlint:-options', '-Xlint:unchecked']
+}
+
 jar {
     manifest {
         attributes 'Implementation-Title': 'File Processing Application',
