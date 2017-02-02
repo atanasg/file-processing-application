@@ -13,6 +13,7 @@ apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'pmd'
 apply plugin: 'findbugs'
+apply plugin: 'project-report'
 
 group = 'com.atanasg'
 version = '0.1.0-SNAPSHOT'
