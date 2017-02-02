@@ -12,6 +12,7 @@ buildScan {
 apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'pmd'
+apply plugin: 'findbugs'
 
 version = '0.1.0-SNAPSHOT'
 
@@ -39,4 +40,14 @@ dependencies {
     compile "com.google.guava:guava:18.0"
     testCompile "junit:junit:4.12"
     testCompile "org.mockito:mockito-core:2.0.31-beta"
+}
+
+// Settings for FindBugs tasks and report
+tasks.withType(FindBugs) {
+    ignoreFailures = true
+    reports {
+        xml.enabled false
+        html.enabled true
+        html.stylesheet resources.text.fromFile('config/xsl/default.xsl')
+    }
 }
