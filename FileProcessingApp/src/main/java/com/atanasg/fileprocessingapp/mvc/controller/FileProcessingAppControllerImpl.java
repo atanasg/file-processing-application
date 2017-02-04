@@ -78,7 +78,7 @@ public class FileProcessingAppControllerImpl implements FileProcessingAppControl
 
 	@Override
 	public void processUserCommand(String userInputLine) {
-		if(firstCommand) {
+		if (firstCommand) {
 			Command openFileCommand = new OpenFileCommand(fileContentModel, userInterface,
 					new String[]{userInputLine});
 			openFileCommand.execute();
@@ -87,11 +87,11 @@ public class FileProcessingAppControllerImpl implements FileProcessingAppControl
 			firstCommand = false;
 		} else {
 			StringTokenizer tokenizedCommand = new StringTokenizer(userInputLine, " ", false);
-			if(tokenizedCommand.countTokens() > 0) {
-				String[] inputParams = new String [tokenizedCommand.countTokens()-1];
+			if (tokenizedCommand.countTokens() > 0) {
+				String[] inputParams = new String [tokenizedCommand.countTokens() - 1];
 
 				String commandStr = tokenizedCommand.nextToken();
-				for(int i = 0; i < inputParams.length; i++) {
+				for (int i = 0; i < inputParams.length; i++) {
 					inputParams[i] = tokenizedCommand.nextToken();
 				}
 				processRegularCommand(commandStr, inputParams);

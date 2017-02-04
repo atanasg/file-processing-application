@@ -121,13 +121,13 @@ public class FileContentTest {
 	}
 
 	private void assertFileModificationsCorrectlyPerformed(
-			List<String> expectedOutputLines, List<String> outputLines) {
+			final List<String> expectedOutputLines, final List<String> outputLines) {
 
 		// both should have the same number of lines
 		assertEquals(expectedOutputLines.size(), outputLines.size());
 
 		// each line should have the same content
-		for(int i = 0; i < expectedOutputLines.size(); i++) {
+		for (int i = 0; i < expectedOutputLines.size(); i++) {
 			String expectedLine = expectedOutputLines.get(i);
 			String outputLine = outputLines.get(i);
 			assertEquals(expectedLine, outputLine);

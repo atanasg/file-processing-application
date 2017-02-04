@@ -42,7 +42,7 @@ public class FileContentModelImpl implements FileContentModel {
 			"The Model has not parsed a file content yet";
 
 	private List<List<String>> parsedFileContent;
-	
+
 	public FileContentModelImpl() {
 		parsedFileContent = null;
 	}
@@ -50,7 +50,7 @@ public class FileContentModelImpl implements FileContentModel {
 	@Override
 	public void parseFileContent(List<String> fileLines) {
 		parsedFileContent = new LinkedList<List<String>>();
-		for(String line : fileLines) {
+		for (String line : fileLines) {
 			List<String> parsedLine = parseLine(line);
 			parsedFileContent.add(parsedLine);
 		}
@@ -62,7 +62,7 @@ public class FileContentModelImpl implements FileContentModel {
 
 		String delimiterString = RuleSeparators.getAllSeparatorsAsString();
 		StringTokenizer strTokenizer = new StringTokenizer(fileLine, delimiterString, true);
-		while(strTokenizer.hasMoreTokens()) {
+		while (strTokenizer.hasMoreTokens()) {
 			lineList.add(strTokenizer.nextToken());
 		}
 		return lineList;
@@ -73,9 +73,9 @@ public class FileContentModelImpl implements FileContentModel {
 		checkState(this.parsedFileContent != null, ERROR_THE_MODEL_HAS_NOT_PARSED_A_FILE_CONTENT_YET);
 
 		List<String> fileContent = new LinkedList<String>();
-		for(List<String> lineTokens : parsedFileContent) {
+		for (List<String> lineTokens : parsedFileContent) {
 			StringBuffer line = new StringBuffer();
-			for(String token : lineTokens) {
+			for (String token : lineTokens) {
 				line.append(token);
 			}
 			fileContent.add(line.toString());
@@ -94,18 +94,18 @@ public class FileContentModelImpl implements FileContentModel {
 		List<Integer> intPositions = new LinkedList<Integer>();
 
 		List<String> lineTokens = parsedFileContent.get(lineIndex);
-		for(int i = 0; i < lineTokens.size(); i++) {
+		for (int i = 0; i < lineTokens.size(); i++) {
 			String token = lineTokens.get(i);
 			boolean tokenIsSeparator = RuleSeparators.isValidSeparator(token);
-			if(!tokenIsSeparator) {
+			if (!tokenIsSeparator) {
 				intPositions.add(i);
 			}
 		}
 		return intPositions;
 	}
-	
+
 	private CommandExecStatus isLineIndexValid(int lineIndex) {
-		if(lineIndex < 0 || lineIndex >= parsedFileContent.size()) {
+		if (lineIndex < 0 || lineIndex >= parsedFileContent.size()) {
 			CommandExecStatus invalidCheckStatus = new CommandFailed();
 			invalidCheckStatus.appendDetailedInfo(String.format("Index for line %d out of range [1,%d]",
 					(lineIndex + 1), getNumberOfLines()));
@@ -117,7 +117,7 @@ public class FileContentModelImpl implements FileContentModel {
 	private CommandExecStatus isLineNumberIndexValid(int lineIndex, int lineNumberIndex) {
 		List<Integer> intPositionsInLine = getPositionsOfIntegerTokensInLine(lineIndex);
 		int countOfNumbersInLine = intPositionsInLine.size();
-		if(lineNumberIndex < 0 || lineNumberIndex >= countOfNumbersInLine) {
+		if (lineNumberIndex < 0 || lineNumberIndex >= countOfNumbersInLine) {
 			CommandExecStatus invalidCheckStatus = new CommandFailed();
 			invalidCheckStatus.appendDetailedInfo(String.format("Number index in line %d out of available range [1,%d]",
 					(lineIndex + 1), countOfNumbersInLine));
@@ -132,24 +132,25 @@ public class FileContentModelImpl implements FileContentModel {
 
 		CommandExecStatus insertStatus;
 
-		if(lineIndex < -1 || lineIndex > parsedFileContent.size()) {
+		if (lineIndex < -1 || lineIndex > parsedFileContent.size()) {
 			insertStatus = new CommandFailed();
 			insertStatus.appendDetailedInfo(String.format("Index for line %d out of range [1,%d]v{0,%d}",
 					(lineIndex + 1), getNumberOfLines(), (getNumberOfLines() + 1)));
 			return insertStatus;
 		}
-		
+
 		// insert into a new line at the beginning or end of file
-		if(lineIndex == -1 || lineIndex == parsedFileContent.size()) {
+		if (lineIndex == -1 || lineIndex == parsedFileContent.size()) {
 			List<String> newLine = new LinkedList<String>();
 			newLine.add(numberToBeInserted.toString());
-			if(lineIndex == -1){
-				parsedFileContent.add(0,newLine);
+			if (lineIndex == -1) {
+				parsedFileContent.add(0, newLine);
 			} else {
 				parsedFileContent.add(newLine);
 			}
+
 			insertStatus = new CommandSuccessful();
-			if(lineIndex == -1) {
+			if (lineIndex == -1) {
 				insertStatus.appendDetailedInfo("Created new line at the beginning of the file");
 			} else {
 				insertStatus.appendDetailedInfo("Created new line at the end of the file");
@@ -160,7 +161,7 @@ public class FileContentModelImpl implements FileContentModel {
 
 		// insert into some of the already existing lines
 		List<Integer> intPositionsInLine = getPositionsOfIntegerTokensInLine(lineIndex);
-		if(lineNumberIndex < 0 || lineNumberIndex > intPositionsInLine.size()) {
+		if (lineNumberIndex < 0 || lineNumberIndex > intPositionsInLine.size()) {
 			insertStatus = new CommandFailed();
 			insertStatus.appendDetailedInfo(String.format("Index of number in line out of range [1,%d]v{%d}",
 					intPositionsInLine.size(), (intPositionsInLine.size() + 1)));
@@ -168,13 +169,13 @@ public class FileContentModelImpl implements FileContentModel {
 		}
 
 		List<String> lineContent = parsedFileContent.get(lineIndex);
-		if(lineNumberIndex == intPositionsInLine.size()) {
+		if (lineNumberIndex == intPositionsInLine.size()) {
 			lineContent.add(RuleSeparators.getDefaultValidSeparator());
 			lineContent.add(numberToBeInserted.toString());
 		} else {
 			int tokenPositionInLine = intPositionsInLine.get(lineNumberIndex);
 			lineContent.add(tokenPositionInLine, numberToBeInserted.toString());
-			lineContent.add((tokenPositionInLine + 1), RuleSeparators.getDefaultValidSeparator());	
+			lineContent.add((tokenPositionInLine + 1), RuleSeparators.getDefaultValidSeparator());
 		}
 		insertStatus = new CommandSuccessful();
 		insertStatus.appendDetailedInfo(String.format("Inserted %s to file", numberToBeInserted));
@@ -186,12 +187,12 @@ public class FileContentModelImpl implements FileContentModel {
 		checkState(this.parsedFileContent != null, ERROR_THE_MODEL_HAS_NOT_PARSED_A_FILE_CONTENT_YET);
 
 		CommandExecStatus checkStatus = isLineIndexValid(lineIndex);
-		if(!checkStatus.isSuccessful()) {
+		if (!checkStatus.isSuccessful()) {
 			return checkStatus;
 		}
 
 		checkStatus = isLineNumberIndexValid(lineIndex, lineNumberIndex);
-		if(!checkStatus.isSuccessful()) {
+		if (!checkStatus.isSuccessful()) {
 			return checkStatus;
 		}
 
@@ -211,12 +212,12 @@ public class FileContentModelImpl implements FileContentModel {
 		checkState(this.parsedFileContent != null, ERROR_THE_MODEL_HAS_NOT_PARSED_A_FILE_CONTENT_YET);
 
 		CommandExecStatus checkStatus = isLineIndexValid(lineIndex);
-		if(!checkStatus.isSuccessful()) {
+		if (!checkStatus.isSuccessful()) {
 			return checkStatus;
 		}
 
 		checkStatus = isLineNumberIndexValid(lineIndex, lineNumberIndex);
-		if(!checkStatus.isSuccessful()) {
+		if (!checkStatus.isSuccessful()) {
 			return checkStatus;
 		}
 
@@ -235,12 +236,12 @@ public class FileContentModelImpl implements FileContentModel {
 		checkState(this.parsedFileContent != null, ERROR_THE_MODEL_HAS_NOT_PARSED_A_FILE_CONTENT_YET);
 
 		CommandExecStatus checkStatus = isLineIndexValid(lineIndex);
-		if(!checkStatus.isSuccessful()) {
+		if (!checkStatus.isSuccessful()) {
 			return checkStatus;
 		}
 
 		checkStatus = isLineNumberIndexValid(lineIndex, lineNumberIndex);
-		if(!checkStatus.isSuccessful()) {
+		if (!checkStatus.isSuccessful()) {
 			return checkStatus;
 		}
 
@@ -249,13 +250,13 @@ public class FileContentModelImpl implements FileContentModel {
 		List<Integer> intPositionsInLine = getPositionsOfIntegerTokensInLine(lineIndex);
 		int tokenPositionInLine = intPositionsInLine.get(lineNumberIndex);
 		String intAsString = lineContent.remove(tokenPositionInLine);
-		if (tokenPositionInLine < lineContent.size() - 1){
+		if (tokenPositionInLine < lineContent.size() - 1) {
 			lineContent.remove(tokenPositionInLine);
 		}
 
 		// remove line if empty now
 		intPositionsInLine = getPositionsOfIntegerTokensInLine(lineIndex);
-		if(intPositionsInLine.isEmpty()) {
+		if (intPositionsInLine.isEmpty()) {
 			parsedFileContent.remove(lineIndex);
 		}
 
@@ -270,12 +271,12 @@ public class FileContentModelImpl implements FileContentModel {
 		checkState(this.parsedFileContent != null, ERROR_THE_MODEL_HAS_NOT_PARSED_A_FILE_CONTENT_YET);
 
 		CommandExecStatus checkStatus = isLineIndexValid(firstLineIndex);
-		if(!checkStatus.isSuccessful()) {
+		if (!checkStatus.isSuccessful()) {
 			return checkStatus;
 		}
 
 		checkStatus = isLineIndexValid(secondLineIndex);
-		if(!checkStatus.isSuccessful()) {
+		if (!checkStatus.isSuccessful()) {
 			return checkStatus;
 		}
 
@@ -295,22 +296,22 @@ public class FileContentModelImpl implements FileContentModel {
 		checkState(this.parsedFileContent != null, ERROR_THE_MODEL_HAS_NOT_PARSED_A_FILE_CONTENT_YET);
 
 		CommandExecStatus checkStatus = isLineIndexValid(firstLineIndex);
-		if(!checkStatus.isSuccessful()) {
+		if (!checkStatus.isSuccessful()) {
 			return checkStatus;
 		}
 
 		checkStatus = isLineNumberIndexValid(firstLineIndex, firstLineNumberIndex);
-		if(!checkStatus.isSuccessful()) {
+		if (!checkStatus.isSuccessful()) {
 			return checkStatus;
 		}
 
 		checkStatus = isLineIndexValid(secondLineIndex);
-		if(!checkStatus.isSuccessful()) {
+		if (!checkStatus.isSuccessful()) {
 			return checkStatus;
 		}
 
 		checkStatus = isLineNumberIndexValid(secondLineIndex, secondLineNumberIndex);
-		if(!checkStatus.isSuccessful()) {
+		if (!checkStatus.isSuccessful()) {
 			return checkStatus;
 		}
 

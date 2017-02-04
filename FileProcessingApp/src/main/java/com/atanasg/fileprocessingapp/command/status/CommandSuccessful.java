@@ -25,7 +25,7 @@ package com.atanasg.fileprocessingapp.command.status;
  *
  * @author Atanas Gegov
  */
-public class CommandSuccessful extends CommandExecStatus {
+public final class CommandSuccessful extends CommandExecStatus {
 
 	public CommandSuccessful() {
 		super("Command SUCCESSFUL", true);

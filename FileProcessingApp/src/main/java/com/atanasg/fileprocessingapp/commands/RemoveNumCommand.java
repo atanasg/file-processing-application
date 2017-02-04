@@ -42,7 +42,7 @@ public class RemoveNumCommand extends AbstractCommandWithArgs {
 		boolean[] removenumParamIsInt = {true, true};
 		removeNumCommandStatus = checkNumberAndTypeOfArguments(2, removenumParamIsInt);
 
-		if(removeNumCommandStatus.isSuccessful()) {
+		if (removeNumCommandStatus.isSuccessful()) {
 			int lineIndex = Integer.parseInt(commandArgs[0]);
 			int numberIndexInLine = Integer.parseInt(commandArgs[1]);
 

@@ -21,13 +21,13 @@ package com.atanasg.fileprocessingapp.rules;
  *
  * @author Atanas Gegov
  */
-public class RuleLineBeginning {
+public final class RuleLineBeginning {
 
 	private static final String VALID_LINE_BEGINNING_REGEX = "[1-9]";
 
 	public static boolean isValidLineBeginning (String fileLine) {
 		String beginningOfLine = fileLine.substring(0, 1);
-		if(beginningOfLine.matches(VALID_LINE_BEGINNING_REGEX)) {
+		if (beginningOfLine.matches(VALID_LINE_BEGINNING_REGEX)) {
 			return true;
 		} else {
 			return false;

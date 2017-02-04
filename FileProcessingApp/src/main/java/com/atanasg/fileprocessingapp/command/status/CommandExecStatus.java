@@ -33,8 +33,8 @@ public abstract class CommandExecStatus {
 		this.detailedInformation = "";
 	}
 
-	public void appendDetailedInfo(String detailedInfo) {
-		if(detailedInformation.equals("")) {
+	public void appendDetailedInfo(final String detailedInfo) {
+		if (detailedInformation.equals("")) {
 			detailedInformation = detailedInfo;
 		} else {
 			detailedInformation += "\n" + detailedInfo;

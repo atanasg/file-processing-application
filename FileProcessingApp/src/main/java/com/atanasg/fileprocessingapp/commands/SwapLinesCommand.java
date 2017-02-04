@@ -42,7 +42,7 @@ public class SwapLinesCommand extends AbstractCommandWithArgs {
 		boolean[] swaplinesParamIsInt = {true, true};
 		swapLinesCommandStatus = checkNumberAndTypeOfArguments(2, swaplinesParamIsInt);
 
-		if(swapLinesCommandStatus.isSuccessful()) {
+		if (swapLinesCommandStatus.isSuccessful()) {
 			int firstLineIndex = Integer.parseInt(commandArgs[0]);
 			int secondLineIndex = Integer.parseInt(commandArgs[1]);
 

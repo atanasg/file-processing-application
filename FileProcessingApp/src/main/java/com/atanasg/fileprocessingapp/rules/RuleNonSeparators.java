@@ -21,7 +21,7 @@ package com.atanasg.fileprocessingapp.rules;
  *
  * @author Atanas Gegov
  */
-public class RuleNonSeparators {
+public final class RuleNonSeparators {
 
 	private static final String VALID_NON_SEPARATOR_CHAR_REGEX = "[0-9]";
 
@@ -30,7 +30,7 @@ public class RuleNonSeparators {
 	}
 
 	public static boolean isValidNonSeparator(String token) {
-		if(token.matches(VALID_NON_SEPARATOR_CHAR_REGEX)) {
+		if (token.matches(VALID_NON_SEPARATOR_CHAR_REGEX)) {
 			return true;
 		} else {
 			return false;

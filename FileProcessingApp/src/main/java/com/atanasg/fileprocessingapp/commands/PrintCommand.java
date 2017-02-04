@@ -45,12 +45,12 @@ public class PrintCommand extends AbstractCommand {
 		userInterface.showInfoForCommandInProgress("Printing current content...");
 		List<String> fileLines = fileContentModel.getFileContentAsFileLines();
 
-		if(fileLines.isEmpty()) {
+		if (fileLines.isEmpty()) {
 			printCommandStatus = new CommandFailed();
 			printCommandStatus.appendDetailedInfo("No content found");
 		} else {
 			printCommandStatus = new CommandSuccessful();
-			for(String line : fileLines) {
+			for (String line : fileLines) {
 				printCommandStatus.appendDetailedInfo(line);
 			}
 		}

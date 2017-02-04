@@ -22,7 +22,10 @@ package com.atanasg.fileprocessingapp.commands;
  *
  * @author Atanas Gegov
  */
-public class CommandNames {
+public final class CommandNames {
+
+	private CommandNames() {
+	}
 
 	// swap commands
 	public static final String COMMAND_SWAPLINES = "swaplines";

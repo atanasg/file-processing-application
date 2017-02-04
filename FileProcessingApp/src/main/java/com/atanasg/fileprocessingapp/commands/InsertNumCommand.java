@@ -33,6 +33,7 @@ import com.atanasg.fileprocessingapp.mvc.view.FileProcessingAppView;
  * @author Atanas Gegov
  */
 public class InsertNumCommand extends AbstractCommandWithArgs {
+	private static final int ARGS_COUNT = 3;
 
 	public InsertNumCommand(FileContentModel fileContentModel,
 			FileProcessingAppView userInterface, String[] commandArgs) {
@@ -44,9 +45,9 @@ public class InsertNumCommand extends AbstractCommandWithArgs {
 		CommandExecStatus insertNumCommandStatus;
 
 		boolean[] insertnumParamIsInt = {true, true, true};
-		insertNumCommandStatus = checkNumberAndTypeOfArguments(3, insertnumParamIsInt);
+		insertNumCommandStatus = checkNumberAndTypeOfArguments(ARGS_COUNT, insertnumParamIsInt);
 
-		if(insertNumCommandStatus.isSuccessful()) {
+		if (insertNumCommandStatus.isSuccessful()) {
 			int lineIndex = Integer.parseInt(commandArgs[0]);
 			int lineNumberIndex = Integer.parseInt(commandArgs[1]);
 			BigInteger numberToBeInserted = new BigInteger(commandArgs[2]);

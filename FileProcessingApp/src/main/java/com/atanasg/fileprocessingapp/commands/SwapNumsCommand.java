@@ -44,7 +44,7 @@ public class SwapNumsCommand extends AbstractCommandWithArgs {
 		boolean[] swapnumsParamIsInt = {true, true, true, true};
 		swapNumsCommandStatus = checkNumberAndTypeOfArguments(4, swapnumsParamIsInt);
 
-		if(swapNumsCommandStatus.isSuccessful()) {
+		if (swapNumsCommandStatus.isSuccessful()) {
 			int firstLineIndex = Integer.parseInt(commandArgs[0]);
 			int firstLineNumberIndex = Integer.parseInt(commandArgs[1]);
 			int secondLineIndex = Integer.parseInt(commandArgs[2]);

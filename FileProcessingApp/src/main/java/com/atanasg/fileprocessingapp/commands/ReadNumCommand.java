@@ -45,7 +45,7 @@ public class ReadNumCommand extends AbstractCommandWithArgs {
 		boolean[] readnumParamIsInt = {true, true};
 		readNumCommandStatus = checkNumberAndTypeOfArguments(2, readnumParamIsInt);
 
-		if(readNumCommandStatus.isSuccessful()) {
+		if (readNumCommandStatus.isSuccessful()) {
 			int lineIndex = Integer.parseInt(commandArgs[0]);
 			int numberIndexInLine = Integer.parseInt(commandArgs[1]);
 

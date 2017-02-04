@@ -72,14 +72,14 @@ public class FileValidationTest {
 	@Test
 	public void testValidFileIsSuccessfullyValidated() {
 		List<String> fileLines = new LinkedList<String>();
-		fileLines.add("1234 4560000 6677	");;
+		fileLines.add("1234 4560000 6677	");
 		fileLines.add("12	4056 44");
 		fileLines.add("123");
 		fileLines.add("1235		4956 789	");
 		assertSuccessfulValidation(fileLines);
 
 		fileLines = new LinkedList<String>();
-		fileLines.add("112312321525 12312312 5234234234 231321321312 123123 2131353453435345345 ");;
+		fileLines.add("112312321525 12312312 5234234234 231321321312 123123 2131353453435345345 ");
 		fileLines.add("213123523520234234 2342340005320 3240230042340230803240 3240909 ");
 		fileLines.add("9897823423975239 ");
 		assertSuccessfulValidation(fileLines);
@@ -118,25 +118,27 @@ public class FileValidationTest {
 		assertValidationFails(fileLines, 4);
 
 		fileLines = new LinkedList<String>();
-		fileLines.add("112312321525 12312312 5234234234 231321321312 123123 2131353453435345345 ");;
+		fileLines.add("112312321525 12312312 5234234234 231321321312 123123 2131353453435345345 ");
 		fileLines.add("0213123523520234234 2342340005320 3240230042340230803240 "
 				+ "3240909 ");                  // starts with 0
 		fileLines.add("98978$23423975239 ");    // has an invalid character
 		assertValidationFails(fileLines, 2);
 	}
 
-	private void assertSuccessfulValidation(List<String> fileLines) {
+	private void assertSuccessfulValidation(final List<String> fileLines) {
 		CommandExecStatus validationStatus = fileValidator.validateFileContents(fileLines);
 		assertTrue(validationStatus.isSuccessful());
 		assertEquals(validationStatus.getDetailedInformation(), FileValidator.NO_VALIDATION_ERRORS_DETECTED);
 	}
 
-	private void assertValidationFails(List<String> fileLines, int expectedNumberOfValidationErrors) {
+	private void assertValidationFails(
+			final List<String> fileLines, final int expectedNumberOfValidationErrors) {
 		CommandExecStatus validationStatus = fileValidator.validateFileContents(fileLines);
 		assertFalse(validationStatus.isSuccessful());
 		StringTokenizer strTokenizer = new StringTokenizer(validationStatus.getDetailedInformation(), "\n", false);
 		assertEquals(expectedNumberOfValidationErrors, strTokenizer.countTokens());
-		while(strTokenizer.hasMoreTokens()) {
+
+		while (strTokenizer.hasMoreTokens()) {
 			assertTrue(strTokenizer.nextToken().startsWith(
 					FileValidator.LINE_HAS_AN_INVALID_CHARACTER_AT_POSITION.substring(0, 5)));
 		}

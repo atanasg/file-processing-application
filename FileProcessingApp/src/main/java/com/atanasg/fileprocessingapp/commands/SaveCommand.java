@@ -56,7 +56,7 @@ public class SaveCommand extends AbstractCommandWithArgs {
 		List<String> fileLines = fileContentModel.getFileContentAsFileLines();
 		saveCommandStatus = fileValidator.validateFileContents(fileLines);
 
-		if(saveCommandStatus.isSuccessful()) {
+		if (saveCommandStatus.isSuccessful()) {
 			File destinationFile = new File(fileName);
 			saveFileLinesToFile(destinationFile, fileLines);
 			saveCommandStatus = new CommandSuccessful();
@@ -66,8 +66,8 @@ public class SaveCommand extends AbstractCommandWithArgs {
 	}
 
 	private void saveFileLinesToFile(File file, List<String> fileLines) {
-		try(BufferedWriter buffWriter = new BufferedWriter(new FileWriter(file))) {
-			for(String line : fileLines) {
+		try (BufferedWriter buffWriter = new BufferedWriter(new FileWriter(file))) {
+			for (String line : fileLines) {
 				buffWriter.write(line + "\n");
 			}
 			buffWriter.flush();

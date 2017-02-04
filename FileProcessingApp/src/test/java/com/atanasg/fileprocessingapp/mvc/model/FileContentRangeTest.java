@@ -107,7 +107,7 @@ public class FileContentRangeTest {
 
 		assertEquals(inputLines.size(), outputLines.size());
 
-		for(int i = 0; i < inputLines.size(); i++) {
+		for (int i = 0; i < inputLines.size(); i++) {
 			String expectedLine = inputLines.get(i);
 			String outputLine = outputLines.get(i);
 			assertEquals(expectedLine, outputLine);

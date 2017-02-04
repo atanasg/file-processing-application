@@ -42,13 +42,13 @@ public class FileValidatorImpl implements FileValidator {
 
 		CommandExecStatus validationStatus = null;
 
-		for(int i = 0; i < fileLines.size(); i++) {
+		for (int i = 0; i < fileLines.size(); i++) {
 			String fileLine = fileLines.get(i);
 
 			// check beginning of line
 			boolean lineStartsCorrect = RuleLineBeginning.isValidLineBeginning(fileLine);
-			if(!lineStartsCorrect) {
-				if(validationStatus == null) {
+			if (!lineStartsCorrect) {
+				if (validationStatus == null) {
 					validationStatus = new CommandFailed();
 				}
 				validationStatus.appendDetailedInfo(
@@ -60,7 +60,7 @@ public class FileValidatorImpl implements FileValidator {
 			validationStatus = checkLineAfterFirstCharacter(validationStatus, fileLine, i);
 		}
 
-		if(validationStatus == null) {
+		if (validationStatus == null) {
 			validationStatus = new CommandSuccessful();
 			validationStatus.appendDetailedInfo(NO_VALIDATION_ERRORS_DETECTED);
 		}
@@ -70,12 +70,12 @@ public class FileValidatorImpl implements FileValidator {
 	private CommandExecStatus checkLineAfterFirstCharacter(CommandExecStatus validationStatus,
 			String fileLine, int lineIndex) {
 
-		for(int j = 1; j < fileLine.length(); j++) {
+		for (int j = 1; j < fileLine.length(); j++) {
 			String currentPosition = fileLine.charAt(j) + "";
 			boolean isValidSeparator = RuleSeparators.isValidSeparator(currentPosition);
 			boolean isValidNonSeparator = RuleNonSeparators.isValidNonSeparator(currentPosition);
-			if(!isValidSeparator && !isValidNonSeparator) {
-				if(validationStatus == null) {
+			if (!isValidSeparator && !isValidNonSeparator) {
+				if (validationStatus == null) {
 					validationStatus = new CommandFailed();
 				}
 				validationStatus.appendDetailedInfo(

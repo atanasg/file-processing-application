@@ -40,6 +40,6 @@ public interface FileValidator {
 	public static final String NO_VALIDATION_ERRORS_DETECTED =
 			"No validation errors detected";
 
-	public CommandExecStatus validateFileContents(List<String> fileLines);
+	public CommandExecStatus validateFileContents(final List<String> fileLines);
 
 }

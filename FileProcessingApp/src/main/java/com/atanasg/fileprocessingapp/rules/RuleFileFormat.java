@@ -22,12 +22,12 @@ package com.atanasg.fileprocessingapp.rules;
  *
  * @author Atanas Gegov
  */
-public class RuleFileFormat {
+public final class RuleFileFormat {
 
 	private static final String VALID_FILE_FORMAT = ".txt";
 
 	public static boolean isValidFileFormat(String fileName) {
-		if(fileName.endsWith(VALID_FILE_FORMAT)) {
+		if (fileName.endsWith(VALID_FILE_FORMAT)) {
 			return true;
 		} else {
 			return false;

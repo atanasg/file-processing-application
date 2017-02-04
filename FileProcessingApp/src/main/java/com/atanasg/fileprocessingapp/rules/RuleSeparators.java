@@ -21,10 +21,10 @@ package com.atanasg.fileprocessingapp.rules;
  *
  * @author Atanas Gegov
  */
-public class RuleSeparators {
+public final class RuleSeparators {
 
 	private static final String[] VALID_SEPARATORS = { " ", "\t" };
-	
+
 	public static boolean isValidSeparator(char token) {
 		return isValidSeparator(token + "");
 	}
@@ -32,7 +32,7 @@ public class RuleSeparators {
 	public static boolean isValidSeparator(String token) {
 		boolean result = false;
 		for (String validSep : VALID_SEPARATORS) {
-			if(validSep.equals(token)) {
+			if (validSep.equals(token)) {
 				result = true;
 				break;
 			}
@@ -46,7 +46,7 @@ public class RuleSeparators {
 
 	public static String getAllSeparatorsAsString() {
 		StringBuffer allSeparators = new StringBuffer();
-		for(String validSep : RuleSeparators.VALID_SEPARATORS) {
+		for (String validSep : RuleSeparators.VALID_SEPARATORS) {
 			allSeparators.append(validSep);
 		}
 		return allSeparators.toString();

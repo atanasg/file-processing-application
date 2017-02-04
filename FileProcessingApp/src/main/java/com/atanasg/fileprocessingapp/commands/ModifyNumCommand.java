@@ -33,6 +33,7 @@ import com.atanasg.fileprocessingapp.mvc.view.FileProcessingAppView;
  * @author Atanas Gegov
  */
 public class ModifyNumCommand extends AbstractCommandWithArgs {
+	private static final int ARGS_COUNT = 3;
 
 	public ModifyNumCommand(FileContentModel fileContentModel,
 			FileProcessingAppView userInterface, String[] commandArgs) {
@@ -44,9 +45,9 @@ public class ModifyNumCommand extends AbstractCommandWithArgs {
 		CommandExecStatus modifyNumCommandStatus;
 
 		boolean[] modifynumParamIsInt = {true, true, true};
-		modifyNumCommandStatus = checkNumberAndTypeOfArguments(3, modifynumParamIsInt);
+		modifyNumCommandStatus = checkNumberAndTypeOfArguments(ARGS_COUNT, modifynumParamIsInt);
 
-		if(modifyNumCommandStatus.isSuccessful()) {
+		if (modifyNumCommandStatus.isSuccessful()) {
 			int lineIndex = Integer.parseInt(commandArgs[0]);
 			int lineNumberIndex = Integer.parseInt(commandArgs[1]);
 			BigInteger numberToBeSet = new BigInteger(commandArgs[2]);

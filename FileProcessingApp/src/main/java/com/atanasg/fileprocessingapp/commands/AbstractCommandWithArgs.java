@@ -40,21 +40,21 @@ public abstract class AbstractCommandWithArgs extends AbstractCommand {
 		this.commandArgs = commandArgs;
 	}
 
-	protected CommandExecStatus checkNumberAndTypeOfArguments(int numOfExpectedArgs,
-			boolean[] expectedArgIsInt) {
+	protected CommandExecStatus checkNumberAndTypeOfArguments(
+			final int numOfExpectedArgs, final boolean[] expectedArgIsInt) {
 		CommandExecStatus argsCheckStatus;
 
-		if(commandArgs.length != numOfExpectedArgs) {
+		if (commandArgs.length != numOfExpectedArgs) {
 			argsCheckStatus = new CommandFailed();
 			argsCheckStatus.appendDetailedInfo("Wrong number of arguments provided");
 			return argsCheckStatus;
 		}
 
-		for(int i = 0; i < commandArgs.length; i++) {
-			if(expectedArgIsInt[i]) {
+		for (int i = 0; i < commandArgs.length; i++) {
+			if (expectedArgIsInt[i]) {
 				try {
 					new BigInteger(commandArgs[i]);
-				} catch(NumberFormatException e) {
+				} catch (NumberFormatException e) {
 					argsCheckStatus = new CommandFailed();
 					argsCheckStatus.appendDetailedInfo(
 							String.format("%s is not an integer value", commandArgs[i]));

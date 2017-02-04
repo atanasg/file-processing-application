@@ -85,8 +85,8 @@ public class ApplicationIntegrationTest {
 		inputLines.add("300 301 302 303 304");
 		inputLines.add("400 401 402 403 405 406");
 
-		try(BufferedWriter buffWriter = new BufferedWriter(new FileWriter(testFile))) {
-			for(String line : inputLines) {
+		try (BufferedWriter buffWriter = new BufferedWriter(new FileWriter(testFile))) {
+			for (String line : inputLines) {
 				buffWriter.write(line + "\n");
 			}
 			buffWriter.flush();
@@ -124,7 +124,7 @@ public class ApplicationIntegrationTest {
 		// some commands with range violation
 		appController.processUserCommand("swaplines 0 10");
 		appController.processUserCommand("swapnum 1 100 2 200");
-		
+
 		// commands with invalid arguments
 		appController.processUserCommand("insertnum 1 1 20abc20");
 
@@ -145,7 +145,7 @@ public class ApplicationIntegrationTest {
 		// 10 valid commands ('help' does not print exec status)
 		verify(appUI, times(10)).showCommandExecutionStatus(isA(CommandSuccessful.class));
 
-		// 4 invalid commands (invalid range commands + unknown command) 
+		// 4 invalid commands (invalid range commands + unknown command)
 		verify(appUI, times(4)).showCommandExecutionStatus(isA(CommandFailed.class));
 
 		// help is shown firstly at the beginning + one 'help' command;
@@ -162,9 +162,9 @@ public class ApplicationIntegrationTest {
 		checkFinalFileContent(expectedFileFinalLines);
 	}
 
-	private void checkFinalFileContent(List<String> expectedFileFinalLines) {
-		try(BufferedReader buffReader = new BufferedReader(new FileReader(testFile))) {
-			for(int i = 0; i < expectedFileFinalLines.size(); i++) {
+	private void checkFinalFileContent(final List<String> expectedFileFinalLines) {
+		try (BufferedReader buffReader = new BufferedReader(new FileReader(testFile))) {
+			for (int i = 0; i < expectedFileFinalLines.size(); i++) {
 				String fileLine = buffReader.readLine();
 				assertEquals(expectedFileFinalLines.get(i), fileLine);
 			}

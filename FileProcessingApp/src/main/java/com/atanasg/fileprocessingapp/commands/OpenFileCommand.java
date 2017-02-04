@@ -53,7 +53,7 @@ public class OpenFileCommand extends AbstractCommandWithArgs {
 		File file = new File(pathToFile);
 		CommandExecStatus fileProcessingStatus;
 
-		if(!file.exists() || !file.isFile() || !RuleFileFormat.isValidFileFormat(pathToFile)) {
+		if (!file.exists() || !file.isFile() || !RuleFileFormat.isValidFileFormat(pathToFile)) {
 			fileProcessingStatus = new CommandFailed();
 			fileProcessingStatus.appendDetailedInfo(
 					String.format("The specified path '%s' is not a valid file", pathToFile));
@@ -75,9 +75,9 @@ public class OpenFileCommand extends AbstractCommandWithArgs {
 
 	private List<String> readFileLines(File file) {
 		List<String> fileLines = new LinkedList<String>();
-		try(BufferedReader buffReader = new BufferedReader(new FileReader(file))) {
+		try (BufferedReader buffReader = new BufferedReader(new FileReader(file))) {
 			String fileLine = buffReader.readLine();
-			while(fileLine != null) {
+			while (fileLine != null) {
 				fileLines.add(fileLine);
 				fileLine = buffReader.readLine();
 			}

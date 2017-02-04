@@ -38,9 +38,9 @@ public class FileProcessingAppCommandLineUI implements FileProcessingAppView {
 
 	private static final String SEPARATING_LINE_STRING = "========================";
 	private static final String SMALL_SEPARATING_LINE_STRING = "----";
-	
+
 	private FileProcessingAppController appController;
-	
+
 	public FileProcessingAppCommandLineUI() {
 		this.appController = null;
 	}
@@ -107,7 +107,7 @@ public class FileProcessingAppCommandLineUI implements FileProcessingAppView {
 	@Override
 	public void showCommandExecutionStatus(CommandExecStatus commandStatus) {
 		System.out.println(commandStatus.getStatusMessage());
-		System.out.println(commandStatus.getDetailedInformation());	
+		System.out.println(commandStatus.getDetailedInformation());
 	}
 
 	@Override

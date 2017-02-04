@@ -30,9 +30,11 @@ import com.atanasg.fileprocessingapp.rules.RuleFileFormat;
  *
  * @author Atanas Gegov
  */
-public class FileProcessingAppLauncher {
-
+public final class FileProcessingAppLauncher {
 	private static final String USER_FILE_PROMPT_MESSAGE = "Please provide a path to some %s file";
+
+	private FileProcessingAppLauncher() {
+	}
 
 	public static void main(String[] args) {
 		// create MVC components

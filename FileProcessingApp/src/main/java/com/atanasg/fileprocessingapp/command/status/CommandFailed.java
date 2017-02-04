@@ -24,7 +24,7 @@ package com.atanasg.fileprocessingapp.command.status;
  *
  * @author Atanas Gegov
  */
-public class CommandFailed extends CommandExecStatus {
+public final class CommandFailed extends CommandExecStatus {
 
 	public CommandFailed() {
 		super("Command FAILED", false);
