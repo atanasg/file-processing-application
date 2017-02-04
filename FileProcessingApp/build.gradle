@@ -14,6 +14,7 @@ apply plugin: 'eclipse'
 apply plugin: 'pmd'
 apply plugin: 'findbugs'
 apply plugin: 'project-report'
+apply plugin: 'checkstyle'
 
 group = 'com.atanasg'
 version = '0.1.0-SNAPSHOT'
@@ -51,5 +52,18 @@ tasks.withType(FindBugs) {
         xml.enabled false
         html.enabled true
         html.stylesheet resources.text.fromFile('config/xsl/default.xsl')
+    }
+}
+
+// Settings for Checkstyle tasks and report
+checkstyle {
+    toolVersion = '7.5'
+}
+
+tasks.withType(Checkstyle) {
+    reports {
+        xml.enabled false
+        html.enabled true
+        html.stylesheet resources.text.fromFile('config/xsl/checkstyle-simple.xsl')
     }
 }
