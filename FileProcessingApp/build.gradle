@@ -15,6 +15,7 @@ apply plugin: 'pmd'
 apply plugin: 'findbugs'
 apply plugin: 'project-report'
 apply plugin: 'checkstyle'
+apply plugin: 'jacoco'
 
 group = 'com.atanasg'
 version = '0.1.0-SNAPSHOT'
