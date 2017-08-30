@@ -1,6 +1,7 @@
 # File Processing Application
 
 [![Build Status](https://travis-ci.org/atanasg/file-processing-application.svg?branch=master)](https://travis-ci.org/atanasg/file-processing-application)
+[![BCH compliance](https://bettercodehub.com/edge/badge/atanasg/file-processing-application?branch=master)](https://bettercodehub.com/)
 
 A command-line application in Java that allows the user to manipulate text files with number content.
 
