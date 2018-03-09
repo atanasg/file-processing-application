@@ -53,7 +53,7 @@ public final class FileProcessingAppLauncher {
 		appController.setView(appUI);
 
 		// Ask the user for a file
-		appUI.askUserForCommand(String.format(USER_FILE_PROMPT_MESSAGE,
-				RuleFileFormat.getValidFileFormatAsString()));
+		executor.execute(() -> appUI.askUserForCommand(
+				String.format(USER_FILE_PROMPT_MESSAGE, RuleFileFormat.getValidFileFormatAsString())));
 	}
 }

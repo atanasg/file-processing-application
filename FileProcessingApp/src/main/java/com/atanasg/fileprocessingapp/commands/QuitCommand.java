@@ -38,7 +38,8 @@ public class QuitCommand extends AbstractCommand {
 
 	@Override
 	public void execute() {
-		userInterface.terminateApplication();
+		userInterface.showInfoForCommandInProgress("Exiting application...");
+		executor.shutdown();
 	}
 
 }

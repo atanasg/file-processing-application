@@ -102,13 +102,9 @@ public class FileProcessingAppControllerImpl implements FileProcessingAppControl
 			}
 		}
 
-		// Handle a next command cycle in a new thread.
-		// Otherwise the calling stack increases due to the
-		// circular calls between the current method and
-		// userInterface.askUserForCommand(...)
-		Thread newCommandIteration =
-				new Thread(() -> userInterface.askUserForCommand("Enter a command"));
-		newCommandIteration.start();
+		if(!executor.isShutdown()) {			
+			executor.execute(() -> userInterface.askUserForCommand("Enter a command"));
+		}
 	}
 
 	private void processRegularCommand(String commandStr, String[] commandArgs) {
