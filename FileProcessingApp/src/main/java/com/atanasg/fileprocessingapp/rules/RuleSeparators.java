@@ -15,6 +15,9 @@
  */
 package com.atanasg.fileprocessingapp.rules;
 
+import java.util.Arrays;
+import java.util.stream.Collectors;
+
 /**
  * A class dealing with the valid separators
  * allowed inside a file.
@@ -30,14 +33,7 @@ public final class RuleSeparators {
 	}
 
 	public static boolean isValidSeparator(String token) {
-		boolean result = false;
-		for (String validSep : VALID_SEPARATORS) {
-			if (validSep.equals(token)) {
-				result = true;
-				break;
-			}
-		}
-		return result;
+		return Arrays.stream(VALID_SEPARATORS).anyMatch(sep -> sep.equals(token));
 	}
 
 	public static String getDefaultValidSeparator() {
@@ -45,10 +41,6 @@ public final class RuleSeparators {
 	}
 
 	public static String getAllSeparatorsAsString() {
-		StringBuffer allSeparators = new StringBuffer();
-		for (String validSep : RuleSeparators.VALID_SEPARATORS) {
-			allSeparators.append(validSep);
-		}
-		return allSeparators.toString();
+		return Arrays.stream(VALID_SEPARATORS).collect(Collectors.joining());
 	}
 }

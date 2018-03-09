@@ -102,11 +102,8 @@ public class FileProcessingAppControllerImpl implements FileProcessingAppControl
 		// Otherwise the calling stack increases due to the
 		// circular calls between the current method and
 		// userInterface.askUserForCommand(...)
-		Thread newCommandIteration = new Thread(new Runnable() {
-			public void run() {
-				userInterface.askUserForCommand("Enter a command");
-			}
-		});
+		Thread newCommandIteration =
+				new Thread(() -> userInterface.askUserForCommand("Enter a command"));
 		newCommandIteration.start();
 	}
 
