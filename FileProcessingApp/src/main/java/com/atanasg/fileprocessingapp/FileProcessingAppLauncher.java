@@ -24,9 +24,9 @@ import com.atanasg.fileprocessingapp.mvc.view.FileProcessingAppView;
 import com.atanasg.fileprocessingapp.rules.RuleFileFormat;
 
 /**
- * The launcher class of the File Processing Application.
- * Initializes and connects the relevant components (Model,
- * View and Controller) and asks for the first user input.
+ * The launcher class of the File Processing Application. Initializes and
+ * connects the relevant components (Model, View and Controller) and asks for
+ * the first user input.
  *
  * @author Atanas Gegov
  */
