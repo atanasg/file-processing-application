@@ -35,6 +35,7 @@ import java.io.IOException;
 import java.math.BigInteger;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.concurrent.ExecutorService;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
@@ -56,6 +57,7 @@ import com.atanasg.fileprocessingapp.mvc.view.FileProcessingAppView;
  */
 public class ApplicationIntegrationTest {
 
+	private static ExecutorService executorMock;
 	private static FileContentModel fileContentModelSpy;
 	private static FileProcessingAppView appUI;
 	private static FileProcessingAppController appController;
@@ -70,7 +72,10 @@ public class ApplicationIntegrationTest {
 		// mock the UI
 		appUI = mock(FileProcessingAppView.class);
 
-		appController = new FileProcessingAppControllerImpl();
+		// mock the executor service
+		executorMock = mock(ExecutorService.class);
+
+		appController = new FileProcessingAppControllerImpl(executorMock);
 
 		// connect MVC components
 		appUI.setController(appController);

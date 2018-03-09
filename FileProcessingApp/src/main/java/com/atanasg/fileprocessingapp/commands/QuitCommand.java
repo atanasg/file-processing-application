@@ -15,6 +15,8 @@
  */
 package com.atanasg.fileprocessingapp.commands;
 
+import java.util.concurrent.ExecutorService;
+
 import com.atanasg.fileprocessingapp.mvc.model.FileContentModel;
 import com.atanasg.fileprocessingapp.mvc.view.FileProcessingAppView;
 
@@ -26,9 +28,12 @@ import com.atanasg.fileprocessingapp.mvc.view.FileProcessingAppView;
  */
 public class QuitCommand extends AbstractCommand {
 
+	private ExecutorService executor;
+
 	public QuitCommand(FileContentModel fileContentModel,
-			FileProcessingAppView userInterface) {
+			FileProcessingAppView userInterface, ExecutorService executor) {
 		super(fileContentModel, userInterface);
+		this.executor = executor;
 	}
 
 	@Override

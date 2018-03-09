@@ -19,6 +19,7 @@ import static com.google.common.base.Preconditions.checkState;
 
 import java.io.File;
 import java.util.StringTokenizer;
+import java.util.concurrent.ExecutorService;
 
 import com.atanasg.fileprocessingapp.commands.Command;
 import com.atanasg.fileprocessingapp.commands.CommandNames;
@@ -49,13 +50,16 @@ import com.atanasg.fileprocessingapp.mvc.view.FileProcessingAppView;
  */
 public class FileProcessingAppControllerImpl implements FileProcessingAppController {
 
+	private ExecutorService executor;
+
 	private FileContentModel fileContentModel;
 	private FileProcessingAppView userInterface;
 	private File activeFile;
 
 	private boolean firstCommand;
 
-	public FileProcessingAppControllerImpl() {
+	public FileProcessingAppControllerImpl(ExecutorService executor) {
+		this.executor = executor;
 		this.fileContentModel = null;
 		this.userInterface = null;
 		this.activeFile = null;
@@ -115,7 +119,7 @@ public class FileProcessingAppControllerImpl implements FileProcessingAppControl
 			command = new HelpCommand(fileContentModel, userInterface);
 			break;
 		case CommandNames.COMMAND_QUIT:
-			command = new QuitCommand(fileContentModel, userInterface);
+			command = new QuitCommand(fileContentModel, userInterface, executor);
 			break;
 		case CommandNames.COMMAND_INSERTNUM:
 			command = new InsertNumCommand(fileContentModel, userInterface, commandArgs);

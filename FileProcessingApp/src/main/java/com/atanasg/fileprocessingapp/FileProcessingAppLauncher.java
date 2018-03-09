@@ -15,6 +15,9 @@
  */
 package com.atanasg.fileprocessingapp;
 
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
 import com.atanasg.fileprocessingapp.mvc.controller.FileProcessingAppController;
 import com.atanasg.fileprocessingapp.mvc.controller.FileProcessingAppControllerImpl;
 import com.atanasg.fileprocessingapp.mvc.model.FileContentModel;
@@ -37,10 +40,12 @@ public final class FileProcessingAppLauncher {
 	}
 
 	public static void main(String[] args) {
+		ExecutorService executor = Executors.newSingleThreadExecutor();
+
 		// create MVC components
 		FileContentModel fileContentModel = new FileContentModelImpl();
 		FileProcessingAppView appUI = new FileProcessingAppCommandLineUI();
-		FileProcessingAppController appController = new FileProcessingAppControllerImpl();
+		FileProcessingAppController appController = new FileProcessingAppControllerImpl(executor);
 
 		// connect MVC components
 		appUI.setController(appController);
