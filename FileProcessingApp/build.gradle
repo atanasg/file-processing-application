@@ -44,7 +44,7 @@ repositories {
 dependencies {
     compile "com.google.guava:guava:18.0"
     testCompile "junit:junit:4.12"
-    testCompile "org.mockito:mockito-core:2.0.31-beta"
+    testCompile "org.mockito:mockito-core:2.+"
 }
 
 // Settings for FindBugs tasks and report
